@@ -47,7 +47,7 @@ Handles sshd\_config CRUD. This is how AllowGroups in
 `/etc/ssh/sshd_config` gets managed:
 
 ```ruby
-ssh_cookbook "AllowGroups" do
+ssh_cookbook_config "AllowGroups" do
   string "AllowGroups #{node[:ssh][:allowed_groups].join(' ')}"
   only_if { node[:ssh][:allowed_groups].any? }
 end
