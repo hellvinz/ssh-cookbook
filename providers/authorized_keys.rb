@@ -1,12 +1,12 @@
 action :setup do
-  directory "#{new_resource.ssh_folder || new_resource.home.try(:+,'/.ssh')} for authorized_keys" do
-    path "#{new_resource.ssh_folder || new_resource.home.try(:+,'/.ssh')}"
+  directory "#{new_resource.ssh_folder || "#{new_resource.home}/.ssh}"} for authorized_keys" do
+    path "#{new_resource.ssh_folder || "#{new_resource.home}/.ssh}"}"
     owner new_resource.username
     group new_resource.username
     mode  '0700'
   end
 
-  file "#{new_resource.ssh_folder || new_resource.home.try(:+,'/.ssh')}/authorized_keys" do
+  file "#{new_resource.ssh_folder || "#{new_resource.home}/.ssh}"}/authorized_keys" do
     owner new_resource.username
     group new_resource.username
     mode   '0600'
