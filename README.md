@@ -35,7 +35,7 @@ Ensures `~/.ssh` & `~/.ssh/authorized_keys` are setup correctly
 specific keys:
 
 ```ruby
-ssh_authorized_keys "root" do
+ssh_cookbook_authorized_keys "root" do
   home "/root"
   ssh_keys node[:ssh][:root_authorized_keys]
 end
@@ -47,7 +47,7 @@ Handles sshd\_config CRUD. This is how AllowGroups in
 `/etc/ssh/sshd_config` gets managed:
 
 ```ruby
-ssh_config "AllowGroups" do
+ssh_cookbook "AllowGroups" do
   string "AllowGroups #{node[:ssh][:allowed_groups].join(' ')}"
   only_if { node[:ssh][:allowed_groups].any? }
 end
